@@ -1,0 +1,229 @@
+Command: /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyACM0 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 /home/ubuntu/esp/test/05_lvgl_camera/build/lvgl_example.elf /home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/bootloader.elf -m '/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python' '/home/ubuntu/esp/esp-idf/tools/idf.py'
+[0;32mI (130) esp_image: segment 1: paddr=00050fa8 vaddr=3fc97400 sizeESP-ROM:esp32s3-20210327[0m
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x403799ca
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+[0;32mI (24) boot: ESP-IDF v5.5.2 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Apr 10 2026 10:19:18[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (27) boot: efuse block revision: v1.3[0m
+[0;32mI (31) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (83) esp_image: segment 0: paddr=00010020 vaddr=3c080020 size=40f80h (266112) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00050fa8 vaddr=3fc97400 size=05f98h ( 24472) load[0m
+[0;32mI (135) esp_image: segment 2: paddr=00056f48 vaddr=40374000 size=090d0h ( 37072) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00060020 vaddr=42000020 size=7e854h (518228) map[0m
+[0;32mI (220) esp_image: segment 4: paddr=000de87c vaddr=4037d0d0 size=0a244h ( 41540) load[0m
+[0;32mI (228) esp_image: segment 5: paddr=000e8ac8 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (236) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (236) boot: Disabling RNG early entropy source...[0m
+[0;32mI (247) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (247) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (248) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (252) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (258) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (263) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (268) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (274) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (280) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (285) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (291) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (296) MSPI Timing: Enter psram timing tuning[0m
+[0;32mI (302) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (306) esp_psram: Speed: 80MHz[0m
+[0;32mI (310) cpu_start: Multicore app[0m
+[0;32mI (740) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (748) cpu_start: GPIO 44 and 43 are used as console UART I/O pins[0m
+[0;32mI (749) cpu_start: Pro cpu start user code[0m
+[0;32mI (749) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (753) app_init: Application information:[0m
+[0;32mI (758) app_init: Project name:     lvgl_example[0m
+[0;32mI (763) app_init: App version:      1[0m
+[0;32mI (768) app_init: Compile time:     Apr 16 2026 17:39:11[0m
+[0;32mI (774) app_init: ELF file SHA256:  8a4199ead587360b...[0m
+[0;32mI (780) app_init: ESP-IDF:          v5.5.2[0m
+[0;32mI (784) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (789) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (794) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (799) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (806) heap_init: At 3FCCA0C0 len 0001F650 (125 KiB): RAM[0m
+[0;32mI (812) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (818) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (825) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (831) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (839) spi_flash: detected chip: generic[0m
+[0;32mI (843) spi_flash: flash io: qio[0m
+[0;32mI (847) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (854) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (862) main_task: Started on CPU0[0m
+[0;32mI (872) main_task: Calling app_main()[0m
+[0;32mI (872) s3 ll_cam: DMA Channel=0[0m
+[0;32mI (872) cam_hal: cam init ok[0m
+[0;32mI (882) sccb-ng: pin_sda 21 pin_scl 16[0m
+[0;32mI (882) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (912) ov3660: Mismatch PID=0x5640[0m
+[0;32mI (912) camera: Camera PID=0x5640 VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (912) camera: Detected OV5640 camera[0m
+[0;32mI (912) camera: Detected camera at address=0x3c[0m
+[0;32mI (1602) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (1602) s3 ll_cam: node_size: 3200, nodes_per_line: 1, lines_per_node: 5[0m
+[0;32mI (1602) s3 ll_cam: dma_half_buffer_min:  3200, dma_half_buffer: 12800, lines_per_half_buffer: 20, dma_buffer_size: 25600[0m
+[0;32mI (1612) cam_hal: buffer_size: 25600, half_buffer_size: 12800, node_buffer_size: 3200, node_cnt: 8, total_cnt: 16[0m
+[0;32mI (1622) cam_hal: Allocating 204800 Byte frame buffer in PSRAM[0m
+[0;32mI (1632) cam_hal: cam config ok[0m
+[0;32mI (1642) ov5640: Set PLL: bypass: 0, multiplier: 8, sys_div: 1, pre_div: 1, root_2x: 0, pclk_root_div: 1, pclk_manual: 1, pclk_div: 4[0m
+[0;32mI (1642) ov5640: Calculated XVCLK: 20000000 Hz, REFIN: 20000000 Hz, VCO: 160000000 Hz, PLL_CLK: 64000000 Hz, SYSCLK: 16000000 Hz, PCLK: 8000000 Hz[0m
+[0;32mI (1682) lvgl_example: SPI BUS init[0m
+[0;32mI (1682) lvgl_example: Install panel IO[0m
+[0;32mI (1682) lvgl_example: Install ST7789 panel driver[0m
+[0;33mW (1802) i2c.master: Please check pull-up resistances whether be connected properly. Otherwise unexpected behavior would happen. For more detailed information, please read docs[0m
+[0;32mI (1802) CST816S: IC id: 182[0m
+[0;32mI (1802) lvgl_example: Initialize touch controller CST816[0m
+[0;32mI (1812) lvgl_example: Install LVGL tick timer[0m
+[0;32mI (1822) lvgl_example: LCD brightness set to 80%[0m
+[0;32mI (1832) main_task: Returned from app_main()[0m
+[0;32mI (19012) lvgl_example: capture[0m
+[0;32mI (19012) lvgl_example: width 320 height 320[0m
+[0;32mI (19022) lvgl_example: capture ok[0m
+[0;32mI (24452) lvgl_example: capture[0m
+[0;32mI (24452) lvgl_example: width 320 height 320[0m
+[0;32mI (24452) lvgl_example: capture ok[0m
+[0;32mI (27142) lvgl_example: capture[0m
+[0;32mI (27142) lvgl_example: width 320 height 320[0m
+[0;32mI (27152) lvgl_example: capture ok[0m
+[0;32mI (31672) lvgl_example: capture[0m
+[0;32mI (31672) lvgl_example: width 320 height 320[0m
+[0;32mI (31672) lvgl_example: capture ok[0m
+[0;32mI (33522) lvgl_example: capture[0m
+[0;32mI (33522) lvgl_example: width 320 height 320[0m
+[0;32mI (33532) lvgl_example: capture ok[0m
+[0;32mI (34272) lvgl_example: capture[0m
+[0;32mI (34272) lvgl_example: width 320 height 320[0m
+[0;32mI (34282) lvgl_example: capture ok[0m
+[0;32mI (35052) lvgl_example: capture[0m
+[0;32mI (35052) lvgl_example: width 320 height 320[0m
+[0;32mI (35062) lvgl_example: capture ok[0m
+[0;32mI (36102) lvgl_example: capture[0m
+[0;32mI (36102) lvgl_example: width 320 height 320[0m
+[0;32mI (36102) lvgl_example: capture ok[0m
+[0;32mI (36752) lvgl_example: capture[0m
+[0;32mI (36752) lvgl_example: width 320 height 320[0m
+[0;32mI (36762) lvgl_example: capture ok[0m
+[0;32mI (37532) lvgl_example: capture[0m
+[0;32mI (37532) lvgl_example: width 320 height 320[0m
+[0;32mI (37542) lvgl_example: capture ok[0m
+[0;32mI (58772) lvgl_example: capture[0m
+[0;32mI (58772) lvgl_example: width 320 height 320[0m
+[0;32mI (58772) lvgl_example: capture ok[0m
+[0;32mI (59812) lvgl_example: capture[0m
+[0;32mI (59812) lvgl_example: width 320 height 320[0m
+[0;32mI (59822) lvgl_example: capture ok[0m
+[0;32mI (60562) lvgl_example: capture[0m
+[0;32mI (60562) lvgl_example: width 320 height 320[0m
+[0;32mI (60562) lvgl_example: capture ok[0m
+[0;32mI (63282) lvgl_example: capture[0m
+[0;32mI (63282) lvgl_example: width 320 height 320[0m
+[0;32mI (63292) lvgl_example: capture ok[0m
+[0;32mI (63672) lvgl_example: capture[0m
+[0;32mI (63672) lvgl_example: width 320 height 320[0m
+[0;32mI (63672) lvgl_example: capture ok[0m
+[0;32mI (64652) lvgl_example: capture[0m
+[0;32mI (64652) lvgl_example: width 320 height 320[0m
+[0;32mI (64662) lvgl_example: capture ok[0m
+[0;32mI (65312) lvgl_example: capture[0m
+[0;32mI (65312) lvgl_example: width 320 height 320[0m
+[0;32mI (65322) lvgl_example: capture ok[0m
+[0;32mI (65882) lvgl_example: capture[0m
+[0;32mI (65882) lvgl_example: width 320 height 320[0m
+[0;32mI (65882) lvgl_example: capture ok[0m
+[0;32mI (66322) lvgl_example: capture[0m
+[0;32mI (66322) lvgl_example: width 320 height 320[0m
+[0;32mI (66332) lvgl_example: capture ok[0m
+[0;32mI (70372) lvgl_example: capture[0m
+[0;32mI (70372) lvgl_example: width 320 height 320[0m
+[0;32mI (70382) lvgl_example: capture ok[0m
+[0;32mI (70972) lvgl_example: capture[0m
+[0;32mI (70972) lvgl_example: width 320 height 320[0m
+[0;32mI (70972) lvgl_example: capture ok[0m
+[0;32mI (74892) lvgl_example: capture[0m
+[0;32mI (74892) lvgl_example: width 320 height 320[0m
+[0;32mI (74902) lvgl_example: capture ok[0m
+[0;32mI (76302) lvgl_example: capture[0m
+[0;32mI (76302) lvgl_example: width 320 height 320[0m
+[0;32mI (76302) lvgl_example: capture ok[0m
+[0;32mI (77052) lvgl_example: capture[0m
+[0;32mI (77052) lvgl_example: width 320 height 320[0m
+[0;32mI (77062) lvgl_example: capture ok[0m
+[0;32mI (89812) lvgl_example: capture[0m
+[0;32mI (89812) lvgl_example: width 320 height 320[0m
+[0;32mI (89812) lvgl_example: capture ok[0m
+[0;32mI (95712) lvgl_example: capture[0m
+[0;32mI (95712) lvgl_example: width 320 height 320[0m
+[0;32mI (95722) lvgl_example: capture ok[0m
+[0;32mI (97302) lvgl_example: capture[0m
+[0;32mI (97302) lvgl_example: width 320 height 320[0m
+[0;32mI (97302) lvgl_example: capture ok[0m
+[0;32mI (97952) lvgl_example: capture[0m
+[0;32mI (97952) lvgl_example: width 320 height 320[0m
+[0;32mI (97962) lvgl_example: capture ok[0m
+[0;32mI (171852) lvgl_example: capture[0m
+[0;32mI (171852) lvgl_example: width 320 height 320[0m
+[0;32mI (171852) lvgl_example: capture ok[0m
+[0;32mI (175022) lvgl_example: capture[0m
+[0;32mI (175022) lvgl_example: width 320 height 320[0m
+[0;32mI (175032) lvgl_example: capture ok[0m
+[0;32mI (175832) lvgl_example: capture[0m
+[0;32mI (175832) lvgl_example: width 320 height 320[0m
+[0;32mI (175832) lvgl_example: capture ok[0m
+[0;32mI (176512) lvgl_example: capture[0m
+[0;32mI (176512) lvgl_example: width 320 height 320[0m
+[0;32mI (176522) lvgl_example: capture ok[0m
+[0;32mI (179962) lvgl_example: capture[0m
+[0;32mI (179962) lvgl_example: width 320 height 320[0m
+[0;32mI (179962) lvgl_example: capture ok[0m
+[0;32mI (180582) lvgl_example: capture[0m
+[0;32mI (180582) lvgl_example: width 320 height 320[0m
+[0;32mI (180592) lvgl_example: capture ok[0m
+[0;32mI (181212) lvgl_example: capture[0m
+[0;32mI (181212) lvgl_example: width 320 height 320[0m
+[0;32mI (181212) lvgl_example: capture ok[0m
+[0;32mI (185342) lvgl_example: capture[0m
+[0;32mI (185342) lvgl_example: width 320 height 320[0m
+[0;32mI (185352) lvgl_example: capture ok[0m
+[0;32mI (185562) lvgl_example: capture[0m
+[0;32mI (185562) lvgl_example: width 320 height 320[0m
+[0;32mI (185562) lvgl_example: capture ok[0m
+[0;32mI (186002) lvgl_example: capture[0m
+[0;32mI (186002) lvgl_example: width 320 height 320[0m
+[0;32mI (186012) lvgl_example: capture ok[0m
+[0;32mI (186192) lvgl_example: capture[0m
+[0;32mI (186262) lvgl_example: width 320 height 320[0m
+[0;32mI (186272) lvgl_example: capture ok[0m
+[0;32mI (186432) lvgl_example: capture[0m
+[0;32mI (186512) lvgl_example: width 320 height 320[0m
+[0;32mI (186522) lvgl_example: capture ok[0m
+[0;32mI (186612) lvgl_example: capture[0m
+[0;32mI (186772) lvgl_example: width 320 height 320[0m
+[0;32mI (186772) lvgl_example: capture ok[0m
+[0;32mI (186832) lvgl_example: capture[0m
+[0;32mI (187022) lvgl_example: width 320 height 320[0m
+[0;32mI (187032) lvgl_example: capture ok[0m
+[0;32mI (187172) lvgl_example: capture[0m
+[0;32mI (187272) lvgl_example: width 320 height 320[0m
+[0;32mI (187282) lvgl_example: capture ok[0m

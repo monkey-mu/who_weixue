@@ -1,0 +1,2 @@
+source /home/ubuntu/esp/test/05_lvgl_camera/build/gdbinit/symbols
+source /home/ubuntu/esp/test/05_lvgl_camera/build/gdbinit/connect

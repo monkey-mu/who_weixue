@@ -1,0 +1,7 @@
+Command: ninja all
+[1/4] cd /home/ubuntu/esp/test/05_lvgl_camera/build/esp-idf/esptool_py && /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/ubuntu/esp/test/05_lvgl_camera/build/partition_table/partition-table.bin /home/ubuntu/esp/test/05_lvgl_camera/build/lvgl_example.bin
+lvgl_example.bin binary size 0xfd9d0 bytes. Smallest app partition is 0x100000 bytes. 0x2630 bytes (1%) free.
+Warning: The smallest app partition is nearly full (1% free space left)!
+[2/4] Performing build step for 'bootloader'
+[1/1] cd /home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/esp-idf/esptool_py && /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/bootloader.bin
+Bootloader binary size 0x57e0 bytes. 0x2820 bytes (31%) free.

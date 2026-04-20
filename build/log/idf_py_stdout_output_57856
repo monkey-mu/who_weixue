@@ -1,0 +1,73 @@
+Command: ninja flash
+[1/5] cd /home/ubuntu/esp/test/05_lvgl_camera/build/esp-idf/esptool_py && /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/ubuntu/esp/test/05_lvgl_camera/build/partition_table/partition-table.bin /home/ubuntu/esp/test/05_lvgl_camera/build/lvgl_example.bin
+lvgl_example.bin binary size 0xd8c30 bytes. Smallest app partition is 0x100000 bytes. 0x273d0 bytes (15%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/esp-idf/esptool_py && /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/bootloader.bin
+Bootloader binary size 0x57e0 bytes. 0x2820 bytes (31%) free.
+[2/3] cd /home/ubuntu/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/ubuntu/esp/esp-idf -D "SERIAL_TOOL=/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python;;/home/ubuntu/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/ubuntu/esp/test/05_lvgl_camera/build -P /home/ubuntu/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32s3 -p /dev/ttyACM0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 16MB 0x0 bootloader/bootloader.bin 0x10000 lvgl_example.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.11.dev2
+Serial port /dev/ttyACM0
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: 3c:dc:75:70:0c:cc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000e8fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 22496 bytes to 14266...
+Writing at 0x00000000... (100 %)
+Wrote 22496 bytes (14266 compressed) at 0x00000000 in 0.5 seconds (effective 369.4 kbit/s)...
+Hash of data verified.
+Compressed 887856 bytes to 528133...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001caaf... (6 %)
+Writing at 0x000254db... (9 %)
+Writing at 0x0002a383... (12 %)
+Writing at 0x0002f29d... (15 %)
+Writing at 0x00033e87... (18 %)
+Writing at 0x00039054... (21 %)
+Writing at 0x0003e72d... (24 %)
+Writing at 0x0004413d... (27 %)
+Writing at 0x00049b9d... (30 %)
+Writing at 0x00052324... (33 %)
+Writing at 0x0005a004... (36 %)
+Writing at 0x0005fff1... (39 %)
+Writing at 0x00066312... (42 %)
+Writing at 0x0006c9ef... (45 %)
+Writing at 0x00073c08... (48 %)
+Writing at 0x000800c3... (51 %)
+Writing at 0x0008753f... (54 %)
+Writing at 0x0008f2d3... (57 %)
+Writing at 0x00095784... (60 %)
+Writing at 0x0009b8c6... (63 %)
+Writing at 0x000a145e... (66 %)
+Writing at 0x000a71bd... (69 %)
+Writing at 0x000ace73... (72 %)
+Writing at 0x000b2a90... (75 %)
+Writing at 0x000b883c... (78 %)
+Writing at 0x000beda3... (81 %)
+Writing at 0x000c511a... (84 %)
+Writing at 0x000ca7cc... (87 %)
+Writing at 0x000d3844... (90 %)
+Writing at 0x000da47a... (93 %)
+Writing at 0x000e05b8... (96 %)
+Writing at 0x000e6ec8... (100 %)
+Wrote 887856 bytes (528133 compressed) at 0x00010000 in 6.9 seconds (effective 1027.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 412.7 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

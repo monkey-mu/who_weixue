@@ -1,0 +1,84 @@
+Command: /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyACM0 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 /home/ubuntu/esp/test/05_lvgl_camera/build/lvgl_example.elf /home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/bootloader.elf -m '/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python' '/home/ubuntu/esp/esp-idf/tools/idf.py'
+[0;32mI (162) esp_image: segment 1: paddr=00084cd8 vaddr=3fc96e00 sizeESP-ROM:esp32s3-20210327[0m
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x42009b0f
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+[0;32mI (24) boot: ESP-IDF v5.5.2 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Apr 10 2026 10:19:18[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (27) boot: efuse block revision: v1.3[0m
+[0;32mI (31) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (83) esp_image: segment 0: paddr=00010020 vaddr=3c070020 size=74cb0h (478384) map[0m
+[0;32mI (162) esp_image: segment 1: paddr=00084cd8 vaddr=3fc96e00 size=03650h ( 13904) load[0m
+[0;32mI (164) esp_image: segment 2: paddr=00088330 vaddr=40374000 size=07ce8h ( 31976) load[0m
+[0;32mI (172) esp_image: segment 3: paddr=00090020 vaddr=42000020 size=62a48h (404040) map[0m
+[0;32mI (233) esp_image: segment 4: paddr=000f2a70 vaddr=4037bce8 size=0b060h ( 45152) load[0m
+[0;32mI (242) esp_image: segment 5: paddr=000fdad8 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (250) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (250) boot: Disabling RNG early entropy source...[0m
+[0;32mI (260) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (260) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (261) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (265) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (270) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (276) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (281) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (287) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (292) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (298) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (304) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (309) MSPI Timing: Enter psram timing tuning[0m
+[0;32mI (315) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (319) esp_psram: Speed: 80MHz[0m
+[0;32mI (323) cpu_start: Multicore app[0m
+[0;32mI (759) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (768) cpu_start: GPIO 44 and 43 are used as console UART I/O pins[0m
+[0;32mI (768) cpu_start: Pro cpu start user code[0m
+[0;32mI (768) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (773) app_init: Application information:[0m
+[0;32mI (778) app_init: Project name:     lvgl_example[0m
+[0;32mI (783) app_init: App version:      1[0m
+[0;32mI (787) app_init: Compile time:     Apr 14 2026 15:22:33[0m
+[0;32mI (793) app_init: ELF file SHA256:  6bf185b12f80954d...[0m
+[0;32mI (799) app_init: ESP-IDF:          v5.5.2[0m
+[0;32mI (804) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (809) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (814) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (818) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (826) heap_init: At 3FCAA6D0 len 0003F040 (252 KiB): RAM[0m
+[0;32mI (832) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (838) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (844) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (850) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (859) spi_flash: detected chip: generic[0m
+[0;32mI (862) spi_flash: flash io: qio[0m
+[0;32mI (867) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (874) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (882) main_task: Started on CPU0[0m
+[0;32mI (892) main_task: Calling app_main()[0m
+[0;32mI (892) lvgl_example: SPI BUS init[0m
+[0;32mI (892) lvgl_example: Install panel IO[0m
+[0;32mI (902) lvgl_example: Install ST7789 panel driver[0m
+[0;33mW (1022) i2c.master: Please check pull-up resistances whether be connected properly. Otherwise unexpected behavior would happen. For more detailed information, please read docs[0m
+[0;32mI (1022) CST816S: IC id: 182[0m
+[0;32mI (1022) lvgl_example: Initialize touch controller CST816[0m
+[0;32mI (1032) lvgl_example: Install LVGL tick timer[0m
+[0;32mI (1042) lvgl_example: LCD brightness set to 80%[0m
+[0;32mI (1052) main_task: Returned from app_main()[0m
