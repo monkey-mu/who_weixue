@@ -1,4 +1,4 @@
-# Install script for directory: /home/ubuntu/esp/test/05_lvgl_camera/managed_components/espressif__esp_lcd_touch
+# Install script for directory: /home/ubuntu/esp/test/who_weixue/managed_components/espressif__esp_lcd_touch
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

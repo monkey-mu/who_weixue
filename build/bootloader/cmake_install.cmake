@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/esp-idf/cmake_install.cmake")
+  include("/home/ubuntu/esp/test/who_weixue/build/bootloader/esp-idf/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ubuntu/esp/test/05_lvgl_camera/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ubuntu/esp/test/who_weixue/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

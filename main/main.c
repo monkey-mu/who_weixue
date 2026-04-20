@@ -49,6 +49,7 @@ static void task(void *param)
     }
 }
 
+static void camera_task(void *param);
 void app_main(void)
 {
     lvgl_api_mux = xSemaphoreCreateRecursiveMutex();

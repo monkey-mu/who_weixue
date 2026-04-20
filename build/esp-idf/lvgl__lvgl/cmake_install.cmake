@@ -1,4 +1,4 @@
-# Install script for directory: /home/ubuntu/esp/test/05_lvgl_camera/managed_components/lvgl__lvgl
+# Install script for directory: /home/ubuntu/esp/test/who_weixue/managed_components/lvgl__lvgl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-/* * Data converted from /home/ubuntu/esp/test/05_lvgl_camera/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/ubuntu/esp/test/who_weixue/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

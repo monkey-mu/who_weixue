@@ -78,7 +78,7 @@ extern "C" {
 extern lv_disp_drv_t disp_drv;   /*Descriptor of a display driver*/
 extern esp_lcd_panel_handle_t panel_handle;
 extern esp_lcd_touch_handle_t tp;
-
+extern SemaphoreHandle_t lvgl_api_mux;
 // 函数声明
 void display_init(void);
 void touch_init(void);

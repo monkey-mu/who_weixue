@@ -14,13 +14,12 @@
 #include "soc/rtc_cntl_reg.h"
 
 static const char *TAG = "init_board";
-
+static lv_indev_drv_t indev_drv; 
 // 全局变量定义
 lv_disp_drv_t disp_drv;
 esp_lcd_panel_handle_t panel_handle;
 esp_lcd_touch_handle_t tp;
-
-static SemaphoreHandle_t lvgl_api_mux = NULL;
+SemaphoreHandle_t lvgl_api_mux = NULL;
 
 bool lvgl_lock(int timeout_ms)
 {
