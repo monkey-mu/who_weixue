@@ -17,4 +17,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file /home/ubuntu/esp/test/who_weixue/build/lvgl_example.elf
+file /home/ubuntu/esp/test/who_weixue/build/who_weixue.elf

@@ -15,10 +15,10 @@
 #include "ui.h"
 #include "init_board.h" // 包含新的初始化头文件
 
+#include "coco_detect.h"
 
 static const char *TAG = "lvgl_example";
 
-static lv_indev_drv_t indev_drv; // Input device driver (Touch)
 
 static void task(void *param)
 {
@@ -91,25 +91,19 @@ static lv_img_dsc_t cap_img = {
     .data_size = CAM_W * CAM_H * 2,
     .data = (uint8_t *)cam_cap_buf,
 };
-static lv_color_t cam_who_buf[CAM_W * CAM_H*4];
-static lv_img_dsc_t who_img = {
-    .header.cf = LV_IMG_CF_TRUE_COLOR,
-    .header.w = CAM_W*2,
-    .header.h = CAM_H*2,
-    .data_size = CAM_W * CAM_H * 8,
-    .data = (uint8_t *)cam_who_buf,
-};
 
+
+static int capt_b = 0;
 void action_camera_capture(lv_event_t * e)
 {
     // ESP_LOGI(TAG, "width %d height %d",fb->width,fb->height);
-    
-    memcpy(cam_cap_buf,cam_buf, CAM_W * CAM_H*2);
-    if (lvgl_lock(-1))
-    {
-        lv_img_set_src(objects.img_captue, &cap_img);
-        lvgl_unlock();
-    }
+    capt_b = 1;
+    // memcpy(cam_cap_buf,cam_buf, CAM_W * CAM_H*2);
+    // if (lvgl_lock(-1))
+    // {
+    //     lv_img_set_src(objects.img_captue, &cap_img);
+    //     lvgl_unlock();
+    // }
 }
 
 static void camera_task(void *param)
@@ -122,9 +116,15 @@ static void camera_task(void *param)
         if (NULL != pic)
         {
             downscale_rgb565((uint16_t*)pic->buf, 240, 176, (uint16_t*)cam_buf, CAM_W, CAM_H);
+            if(capt_b)
+            {memcpy(cam_cap_buf,cam_buf, CAM_W * CAM_H*2);
+            capt_b = 0;
+            coco_detect_run(pic->buf, pic->width, pic->height);
+            }
             if (lvgl_lock(-1))
             {
                 lv_img_set_src(objects.img_camera, &cam_img);
+                lv_img_set_src(objects.img_captue, &cap_img);
                 lvgl_unlock();
             }
             esp_camera_fb_return(pic);

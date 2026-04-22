@@ -16,9 +16,9 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   "flasher_args.json"
   "ldgen_libraries"
   "ldgen_libraries.in"
-  "lvgl_example.bin"
-  "lvgl_example.map"
   "project_elf_src_esp32s3.c"
+  "who_weixue.bin"
+  "who_weixue.map"
   "x509_crt_bundle.S"
   )
 endif()

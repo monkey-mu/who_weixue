@@ -36124,6 +36124,488 @@
                 "children": [
                     {
                         "children": [],
+                        "depends_on": "!COCO_DETECT_MODEL_IN_SDCARD",
+                        "help": null,
+                        "id": "FLASH_COCO_DETECT_YOLO11N_S8_V1",
+                        "name": "FLASH_COCO_DETECT_YOLO11N_S8_V1",
+                        "range": null,
+                        "title": "flash coco_detect_yolo11n_s8_v1",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "!COCO_DETECT_MODEL_IN_SDCARD",
+                        "help": null,
+                        "id": "FLASH_COCO_DETECT_YOLO11N_S8_V2",
+                        "name": "FLASH_COCO_DETECT_YOLO11N_S8_V2",
+                        "range": null,
+                        "title": "flash coco_detect_yolo11n_s8_v2",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "!COCO_DETECT_MODEL_IN_SDCARD",
+                        "help": null,
+                        "id": "FLASH_COCO_DETECT_YOLO11N_S8_V3",
+                        "name": "FLASH_COCO_DETECT_YOLO11N_S8_V3",
+                        "range": null,
+                        "title": "flash coco_detect_yolo11n_s8_v3",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "!COCO_DETECT_MODEL_IN_SDCARD",
+                        "help": null,
+                        "id": "FLASH_COCO_DETECT_YOLO11N_320_S8_V3",
+                        "name": "FLASH_COCO_DETECT_YOLO11N_320_S8_V3",
+                        "range": null,
+                        "title": "flash coco_detect_yolo11n_320_s8_v3",
+                        "type": "bool"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "(COCO_DETECT_MODEL_IN_SDCARD || FLASH_COCO_DETECT_YOLO11N_S8_V1) && <choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_YOLO11N_S8_V1",
+                                "name": "COCO_DETECT_YOLO11N_S8_V1",
+                                "range": null,
+                                "title": "coco_detect_yolo11n_s8_v1",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "(COCO_DETECT_MODEL_IN_SDCARD || FLASH_COCO_DETECT_YOLO11N_S8_V2) && <choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_YOLO11N_S8_V2",
+                                "name": "COCO_DETECT_YOLO11N_S8_V2",
+                                "range": null,
+                                "title": "coco_detect_yolo11n_s8_v2",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "(COCO_DETECT_MODEL_IN_SDCARD || FLASH_COCO_DETECT_YOLO11N_S8_V3) && <choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_YOLO11N_S8_V3",
+                                "name": "COCO_DETECT_YOLO11N_S8_V3",
+                                "range": null,
+                                "title": "coco_detect_yolo11n_s8_v3",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "(COCO_DETECT_MODEL_IN_SDCARD || FLASH_COCO_DETECT_YOLO11N_320_S8_V3) && <choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_YOLO11N_320_S8_V3",
+                                "name": "COCO_DETECT_YOLO11N_320_S8_V3",
+                                "range": null,
+                                "title": "coco_detect_yolo11n_320_s8_v3",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "default coco_detect model",
+                        "id": "component-config-models-coco_detect-default-model",
+                        "name": null,
+                        "title": "default model",
+                        "type": "choice"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "DEFAULT_COCO_DETECT_MODEL",
+                        "name": "DEFAULT_COCO_DETECT_MODEL",
+                        "range": null,
+                        "title": null,
+                        "type": "int"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "<choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_MODEL_IN_FLASH_RODATA",
+                                "name": "COCO_DETECT_MODEL_IN_FLASH_RODATA",
+                                "range": null,
+                                "title": "flash_rodata",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_MODEL_IN_FLASH_PARTITION",
+                                "name": "COCO_DETECT_MODEL_IN_FLASH_PARTITION",
+                                "range": null,
+                                "title": "flash_partition",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice>",
+                                "help": null,
+                                "id": "COCO_DETECT_MODEL_IN_SDCARD",
+                                "name": "COCO_DETECT_MODEL_IN_SDCARD",
+                                "range": null,
+                                "title": "sdcard",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "coco_detect model location",
+                        "id": "component-config-models-coco_detect-model-location",
+                        "name": null,
+                        "title": "model location",
+                        "type": "choice"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "COCO_DETECT_MODEL_LOCATION",
+                        "name": "COCO_DETECT_MODEL_LOCATION",
+                        "range": null,
+                        "title": null,
+                        "type": "int"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": "COCO_DETECT_MODEL_IN_SDCARD",
+                        "help": "Directory of models relative to sdcard mount point.",
+                        "id": "COCO_DETECT_MODEL_SDCARD_DIR",
+                        "name": "COCO_DETECT_MODEL_SDCARD_DIR",
+                        "range": null,
+                        "title": "coco_detect model sdcard dir",
+                        "type": "string"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-models-coco_detect",
+                "title": "models: coco_detect",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB565_TO_RGB565_SUPPORT",
+                                "name": "PIX_CVT_RGB565_TO_RGB565_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb565 to rgb565.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB565_TO_RGB888_SUPPORT",
+                                "name": "PIX_CVT_RGB565_TO_RGB888_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb565 to rgb888.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB565_TO_GRAY_SUPPORT",
+                                "name": "PIX_CVT_RGB565_TO_GRAY_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb565 to gray.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB565_TO_HSV_SUPPORT",
+                                "name": "PIX_CVT_RGB565_TO_HSV_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb565 to hsv.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB888_TO_RGB888_SUPPORT",
+                                "name": "PIX_CVT_RGB888_TO_RGB888_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb888 to rgb888.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB888_TO_RGB565_SUPPORT",
+                                "name": "PIX_CVT_RGB888_TO_RGB565_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb888 to rgb565.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB888_TO_GRAY_SUPPORT",
+                                "name": "PIX_CVT_RGB888_TO_GRAY_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb888 to gray.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_RGB888_TO_HSV_SUPPORT",
+                                "name": "PIX_CVT_RGB888_TO_HSV_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from rgb888 to hsv.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_GRAY_TO_GRAY_SUPPORT",
+                                "name": "PIX_CVT_GRAY_TO_GRAY_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from gray to gray.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_HSV_TO_HSV_MASK_SUPPORT",
+                                "name": "PIX_CVT_HSV_TO_HSV_MASK_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from hsv to hsv_mask.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_YUV_TO_RGB888_SUPPORT",
+                                "name": "PIX_CVT_YUV_TO_RGB888_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from yuv to rgb888.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_YUV_TO_RGB565_SUPPORT",
+                                "name": "PIX_CVT_YUV_TO_RGB565_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from yuv to rgb565.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_YUV_TO_GRAY_SUPPORT",
+                                "name": "PIX_CVT_YUV_TO_GRAY_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from yuv to gray.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_YUV_TO_HSV_SUPPORT",
+                                "name": "PIX_CVT_YUV_TO_HSV_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from yuv to hsv.",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": null,
+                                "help": null,
+                                "id": "PIX_CVT_YUV_TO_YUV_SUPPORT",
+                                "name": "PIX_CVT_YUV_TO_YUV_SUPPORT",
+                                "range": null,
+                                "title": "Support conversions from yuv to yuv.",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "id": "component-config-esp-dl-configuration-vision-image-pixel-convert-support",
+                        "title": "Vision/Image: Pixel Convert Support",
+                        "type": "menu"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-esp-dl-configuration",
+                "title": "ESP-DL Configuration",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
+                        "depends_on": "IDF_TARGET_ESP32 || IDF_TARGET_ESP32S3 || IDF_TARGET_ESP32P4 || IDF_TARGET_ESP32S31",
+                        "help": null,
+                        "id": "DSP_OPTIMIZATIONS_SUPPORTED",
+                        "name": "DSP_OPTIMIZATIONS_SUPPORTED",
+                        "range": null,
+                        "title": null,
+                        "type": "bool"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_OPTIMIZATION>",
+                                "help": null,
+                                "id": "DSP_ANSI",
+                                "name": "DSP_ANSI",
+                                "range": null,
+                                "title": "ANSI C",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "DSP_OPTIMIZATIONS_SUPPORTED && <choice DSP_OPTIMIZATION>",
+                                "help": null,
+                                "id": "DSP_OPTIMIZED",
+                                "name": "DSP_OPTIMIZED",
+                                "range": null,
+                                "title": "Optimized",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "An ANSI C version could be used for verification and debug purpose,\nor for chips where an optimized version is not available.",
+                        "id": "component-config-dsp-library-dsp-optimization",
+                        "name": "DSP_OPTIMIZATION",
+                        "title": "DSP Optimization",
+                        "type": "choice"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "DSP_OPTIMIZATION",
+                        "name": "DSP_OPTIMIZATION",
+                        "range": null,
+                        "title": null,
+                        "type": "int"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_512",
+                                "name": "DSP_MAX_FFT_SIZE_512",
+                                "range": null,
+                                "title": "512",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_1024",
+                                "name": "DSP_MAX_FFT_SIZE_1024",
+                                "range": null,
+                                "title": "1024",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_2048",
+                                "name": "DSP_MAX_FFT_SIZE_2048",
+                                "range": null,
+                                "title": "2048",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_4096",
+                                "name": "DSP_MAX_FFT_SIZE_4096",
+                                "range": null,
+                                "title": "4096",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_8192",
+                                "name": "DSP_MAX_FFT_SIZE_8192",
+                                "range": null,
+                                "title": "8192",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_16384",
+                                "name": "DSP_MAX_FFT_SIZE_16384",
+                                "range": null,
+                                "title": "16384",
+                                "type": "bool"
+                            },
+                            {
+                                "children": [],
+                                "depends_on": "<choice DSP_MAX_FFT_SIZE>",
+                                "help": null,
+                                "id": "DSP_MAX_FFT_SIZE_32768",
+                                "name": "DSP_MAX_FFT_SIZE_32768",
+                                "range": null,
+                                "title": "32768",
+                                "type": "bool"
+                            }
+                        ],
+                        "depends_on": null,
+                        "help": "This is default FFT size for internal usage.",
+                        "id": "component-config-dsp-library-maximum-fft-length",
+                        "name": "DSP_MAX_FFT_SIZE",
+                        "title": "Maximum FFT length",
+                        "type": "choice"
+                    },
+                    {
+                        "children": [],
+                        "depends_on": null,
+                        "help": null,
+                        "id": "DSP_MAX_FFT_SIZE",
+                        "name": "DSP_MAX_FFT_SIZE",
+                        "range": null,
+                        "title": null,
+                        "type": "int"
+                    }
+                ],
+                "depends_on": null,
+                "id": "component-config-dsp-library",
+                "title": "DSP Library",
+                "type": "menu"
+            },
+            {
+                "children": [
+                    {
+                        "children": [],
                         "depends_on": null,
                         "help": "Enable this option if you want to use the OV7670.\nDisable this option to save memory.",
                         "id": "OV7670_SUPPORT",
