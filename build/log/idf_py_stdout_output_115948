@@ -1,0 +1,99 @@
+Command: ninja app-flash
+[1/2] cd /home/ubuntu/esp/test/who_weixue/build/esp-idf/esptool_py && /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/ubuntu/esp/test/who_weixue/build/partition_table/partition-table.bin /home/ubuntu/esp/test/who_weixue/build/who_weixue.bin
+who_weixue.bin binary size 0x25e3e0 bytes. Smallest app partition is 0x3e8000 bytes. 0x189c20 bytes (39%) free.
+[1/2] cd /home/ubuntu/esp/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/ubuntu/esp/esp-idf -D "SERIAL_TOOL=/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python;;/home/ubuntu/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@app-flash_args" -D WORKING_DIRECTORY=/home/ubuntu/esp/test/who_weixue/build -P /home/ubuntu/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32s3 -p /dev/ttyACM0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 16MB 0x10000 who_weixue.bin
+esptool.py v4.11.dev2
+Serial port /dev/ttyACM0
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+USB mode: USB-Serial/JTAG
+MAC: 3c:dc:75:70:0c:cc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00010000 to 0x0026efff...
+Compressed 2483168 bytes to 1179842...
+Writing at 0x00010000... (1 %)
+Writing at 0x0001db5c... (2 %)
+Writing at 0x0002a577... (4 %)
+Writing at 0x0002f505... (5 %)
+Writing at 0x0003431c... (6 %)
+Writing at 0x000390ff... (8 %)
+Writing at 0x0003e033... (9 %)
+Writing at 0x000436a4... (10 %)
+Writing at 0x00049102... (12 %)
+Writing at 0x0004e495... (13 %)
+Writing at 0x000557c8... (15 %)
+Writing at 0x0005f2f1... (16 %)
+Writing at 0x00064e70... (17 %)
+Writing at 0x0006adc7... (19 %)
+Writing at 0x00070de6... (20 %)
+Writing at 0x0007a301... (21 %)
+Writing at 0x000811d9... (23 %)
+Writing at 0x000889a8... (24 %)
+Writing at 0x00090c5e... (26 %)
+Writing at 0x0009653a... (27 %)
+Writing at 0x0009c664... (28 %)
+Writing at 0x000a504a... (30 %)
+Writing at 0x000ab279... (31 %)
+Writing at 0x000b16db... (32 %)
+Writing at 0x000b797f... (34 %)
+Writing at 0x000c071e... (35 %)
+Writing at 0x000c6e47... (36 %)
+Writing at 0x000d1ad4... (38 %)
+Writing at 0x000d8a5b... (39 %)
+Writing at 0x000df349... (41 %)
+Writing at 0x000e6640... (42 %)
+Writing at 0x000ef305... (43 %)
+Writing at 0x000f6ae1... (45 %)
+Writing at 0x000fe548... (46 %)
+Writing at 0x00107c5c... (47 %)
+Writing at 0x00115914... (49 %)
+Writing at 0x0011d768... (50 %)
+Writing at 0x00125b03... (52 %)
+Writing at 0x0012dfd6... (53 %)
+Writing at 0x001375d0... (54 %)
+Writing at 0x00140212... (56 %)
+Writing at 0x00149e55... (57 %)
+Writing at 0x00152d8d... (58 %)
+Writing at 0x0015edce... (60 %)
+Writing at 0x00166b91... (61 %)
+Writing at 0x00170d0e... (63 %)
+Writing at 0x0017ac75... (64 %)
+Writing at 0x00181898... (65 %)
+Writing at 0x0018eaf7... (67 %)
+Writing at 0x0019a91a... (68 %)
+Writing at 0x001a399b... (69 %)
+Writing at 0x001aefbd... (71 %)
+Writing at 0x001b920a... (72 %)
+Writing at 0x001d71a6... (73 %)
+Writing at 0x001e111d... (75 %)
+Writing at 0x001e79a2... (76 %)
+Writing at 0x001ee057... (78 %)
+Writing at 0x001f38ab... (79 %)
+Writing at 0x001f8b54... (80 %)
+Writing at 0x001fe3ed... (82 %)
+Writing at 0x0020367f... (83 %)
+Writing at 0x0020889d... (84 %)
+Writing at 0x0020dc99... (86 %)
+Writing at 0x00213553... (87 %)
+Writing at 0x00218f68... (89 %)
+Writing at 0x0021ecf2... (90 %)
+Writing at 0x002252dc... (91 %)
+Writing at 0x0022e822... (93 %)
+Writing at 0x00256273... (94 %)
+Writing at 0x0025bf9b... (95 %)
+Writing at 0x00261de3... (97 %)
+Writing at 0x00267c14... (98 %)
+Writing at 0x0026e2c4... (100 %)
+Wrote 2483168 bytes (1179842 compressed) at 0x00010000 in 18.6 seconds (effective 1065.7 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

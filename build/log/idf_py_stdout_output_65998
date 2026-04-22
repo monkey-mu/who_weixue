@@ -1,0 +1,20 @@
+Command: ninja size
+[0/1] cd /home/ubuntu/esp/test/who_weixue/build && /usr/bin/cmake -D "IDF_SIZE_TOOL=/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python;-m;esp_idf_size" -D MAP_FILE=/home/ubuntu/esp/test/who_weixue/build/who_weixue.map -D OUTPUT_JSON= -P /home/ubuntu/esp/esp-idf/tools/cmake/run_size_tool.cmake
+                            Memory Type Usage Summary                             
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Memory Type/Section ┃ Used [bytes] ┃ Used [%] ┃ Remain [bytes] ┃ Total [bytes] ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ Flash Code          │      2126440 │          │                │               │
+│    .text            │      2126440 │          │                │               │
+│ DIRAM               │       360875 │   105.59 │         -19115 │        341760 │
+│    .bss             │       239768 │    70.16 │                │               │
+│    .text            │        77715 │    22.74 │                │               │
+│    .data            │        24168 │     7.07 │                │               │
+│    .bss_overflow    │        19224 │     5.62 │                │               │
+│ Flash Data          │       301228 │          │                │               │
+│    .rodata          │       300972 │          │                │               │
+│    .appdesc         │          256 │          │                │               │
+│ IRAM                │        16384 │    100.0 │              0 │         16384 │
+│    .text            │        15356 │    93.73 │                │               │
+│    .vectors         │         1028 │     6.27 │                │               │
+└─────────────────────┴──────────────┴──────────┴────────────────┴───────────────┘

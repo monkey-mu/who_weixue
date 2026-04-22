@@ -1,37 +1,33 @@
 #include "coco_detect.hpp"
 #include "dl_image_jpeg.hpp"
-extern "C" {
-#include "init_board.h"
-}
+// extern "C" {
+// #include "init_board.h"
+// }
 
-extern const uint8_t bus_jpg_start[] asm("_binary_bus_jpg_start");
-extern const uint8_t bus_jpg_end[] asm("_binary_bus_jpg_end");
+
 const char *TAG = "yolo11n";
-
-static lv_color_t cam_who_buf[240 * 176*2];
-static lv_img_dsc_t who_img = {
-    .header.cf = LV_IMG_CF_TRUE_COLOR,
-    .header.w = 240,
-    .header.h = 176,
-    .data_size = 240 * 176 * 2,
-    .data = (uint8_t *)cam_who_buf,
-};
-extern "C" void coco_detect_run(uint8_t *rgb565, int w, int h)
+extern "C" void coco_detect_run(uint8_t *rgb565, uint16_t w, uint16_t h, uint8_t *detect_img)
 {
-    l::image::jpeg_img_t jpeg_img = {.data = (void *)rgb565, .data_len = (size_t)(w*h*2)};
-    auto img = dl::image::sw_decode_jpeg(jpeg_img, dl::image::DL_IMAGE_PIX_TYPE_RGB565LE);
-
+    ESP_LOGI(TAG,"coco begin");
+    dl::image::img_t img = {.data=rgb565, .width=w, .height=h, .pix_type=dl::image::DL_IMAGE_PIX_TYPE_RGB888};
     COCODetect *detect = new COCODetect();
+    ESP_LOGI(TAG,"heap internal: %d\n", heap_caps_get_free_size(MALLOC_CAP_INTERNAL));
+    ESP_LOGI(TAG,"heap psram   : %d\n", heap_caps_get_free_size(MALLOC_CAP_SPIRAM));
     auto &detect_results = detect->run(img);
-
+    for (const auto &res : detect_results) {
+        ESP_LOGI(TAG,
+                 "[category: %d, score: %f, x1: %d, y1: %d, x2: %d, y2: %d]",
+                 res.category,
+                 res.score,
+                 res.box[0],
+                 res.box[1],
+                 res.box[2],
+                 res.box[3]);
+    }
+    ESP_LOGI(TAG,"coco over");
     delete detect;
 
-    memcpy(cam_who_buf,img.data, img.bytes);
-    if (lvgl_lock(-1))
-    {
-        lv_img_set_src(objects.img_captue, &who_img);
-        lvgl_unlock();
-    }
+ //   memcpy(detect_img,img.data, img.width*img.height*2);
 
     heap_caps_free(img.data);
 }

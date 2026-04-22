@@ -288,12 +288,12 @@ void camera_init(void)
     config.pin_pwdn = PWDN_GPIO_NUM;
     config.pin_reset = RESET_GPIO_NUM;
     config.xclk_freq_hz = 20000000;
-    config.frame_size = FRAMESIZE_HQVGA;
+    config.frame_size = FRAMESIZE_320X320;
     config.pixel_format = PIXFORMAT_RGB565; // for streaming
     // config.pixel_format = PIXFORMAT_RGB565; // for face detection/recognition
     config.grab_mode = CAMERA_GRAB_LATEST;
     config.fb_location = CAMERA_FB_IN_PSRAM;
-    config.jpeg_quality = 10;
+    config.jpeg_quality = 20;
     config.fb_count = 1;
     esp_err_t err = esp_camera_init(&config);
     if (err != ESP_OK)

@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "who_weixue",
-    "project_version":    "d40f892-dirty",
+    "project_version":    "b625752-dirty",
     "project_path":       "/home/ubuntu/esp/test/who_weixue",
     "idf_path":           "/home/ubuntu/esp/esp-idf",
     "build_dir":          "/home/ubuntu/esp/test/who_weixue/build",
@@ -1375,7 +1375,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__coco_detect", "espressif__esp-dl", "espressif__esp32-camera", "espressif__esp_lcd_touch", "espressif__esp_lcd_touch_cst816s", "lvgl__lvgl" ],
             "file": "/home/ubuntu/esp/test/who_weixue/build/esp-idf/main/libmain.a",
-            "sources": [ "/home/ubuntu/esp/test/who_weixue/main/main.c", "/home/ubuntu/esp/test/who_weixue/main/init_board.c", "/home/ubuntu/esp/test/who_weixue/ui/eez-flow.cpp", "/home/ubuntu/esp/test/who_weixue/ui/images.c", "/home/ubuntu/esp/test/who_weixue/ui/screens.c", "/home/ubuntu/esp/test/who_weixue/ui/styles.c", "/home/ubuntu/esp/test/who_weixue/ui/ui.c", "/home/ubuntu/esp/test/who_weixue/ui/ui_image_photo1.c" ],
+            "sources": [ "/home/ubuntu/esp/test/who_weixue/main/main.c", "/home/ubuntu/esp/test/who_weixue/main/init_board.c", "/home/ubuntu/esp/test/who_weixue/main/coco_detect.cpp", "/home/ubuntu/esp/test/who_weixue/ui/eez-flow.cpp", "/home/ubuntu/esp/test/who_weixue/ui/images.c", "/home/ubuntu/esp/test/who_weixue/ui/screens.c", "/home/ubuntu/esp/test/who_weixue/ui/styles.c", "/home/ubuntu/esp/test/who_weixue/ui/ui.c", "/home/ubuntu/esp/test/who_weixue/ui/ui_image_photo1.c" ],
             "include_dirs": [ ".", "../ui" ]
         },
         "mbedtls": {

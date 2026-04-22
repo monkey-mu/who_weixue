@@ -1,0 +1,25 @@
+Command: /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyACM0 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 /home/ubuntu/esp/test/who_weixue/build/who_weixue.elf /home/ubuntu/esp/test/who_weixue/build/lvgl_example.elf /home/ubuntu/esp/test/who_weixue/build/bootloader/bootloader.elf -m '/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python' '/home/ubuntu/esp/esp-idf/tools/idf.py'
+[0;33m--- esp-idf-monitor 1.9.0 on /dev/ttyACM0 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x4037a50e: [0;33mesp_cpu_wait_for_intr[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/esp_hw_support/cpu.c[0m[0m:[1;31m64[0m
+[0m--- 0x403c8700: [0;33m_stext[0m[0m at [0;32m??[0m[0m:[1;31m?[0m
+[0m--- 0x403c894c: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m--- 0x421b9efe: [0;33m__wrap___cxa_allocate_exception[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/cxx/cxx_exception_stubs.cpp[0m[0m:[1;31m184[0m
+[0m--- 0x4037cf75: [0;33mpanic_abort[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m477[0m
+[0m--- 0x4037cf3d: [0;33mesp_system_abort[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x40383dbe: [0;33mabort[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/newlib/src/abort.c[0m[0m:[1;31m38[0m
+[0m--- 0x421b9efe: [0;33m__wrap___cxa_allocate_exception[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/cxx/cxx_exception_stubs.cpp[0m[0m:[1;31m184[0m
+[0m--- 0x421b8e01: [0;33moperator new(unsigned int)[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/libsupc++/new_op.cc[0m[0m:[1;31m54[0m
+[0m--- 0x420771b6: [0;33mdl::MemoryManagerGreedy::get_tensor_info_from_fbs(fbs::FbsModel*, std::vector<dl::module::Module*, std::allocator<dl::module::Module*> >, dl::ModelContext*, std::vector<dl::TensorInfo*, std::allocator<dl::TensorInfo*> >&)[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__esp-dl/dl/model/src/dl_memory_manager_greedy.cpp[0m[0m:[1;31m155[0m
+[0m--- 0x4207852e: [0;33mdl::MemoryManagerGreedy::alloc(fbs::FbsModel*, std::vector<dl::module::Module*, std::allocator<dl::module::Module*> >&, dl::ModelContext*)[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__esp-dl/dl/model/src/dl_memory_manager_greedy.cpp[0m[0m:[1;31m17[0m
+[0m--- 0x4204c1e7: [0;33mdl::Model::build(unsigned int, dl::memory_manager_t, bool)[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__esp-dl/dl/model/src/dl_model_base.cpp[0m[0m:[1;31m198[0m
+[0m--- 0x4204c7b5: [0;33mdl::Model::Model(char const*, char const*, fbs::model_location_type_t, int, dl::memory_manager_t, unsigned char const*, bool)[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__esp-dl/dl/model/src/dl_model_base.cpp[0m[0m:[1;31m63[0m
+[0m--- 0x4201c964: [0;33mcoco_detect::Yolo11n::Yolo11n(char const*, float, float)[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__coco_detect/coco_detect.cpp[0m[0m:[1;31m29[0m
+[0m--- 0x4201cabf: [0;33mCOCODetect::load_model()[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__coco_detect/coco_detect.cpp[0m[0m:[1;31m87[0m
+[0m--- 0x421cc61e: [0;33mdl::detect::DetectWrapper::run[abi:cxx11](dl::image::img_s const&)[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/managed_components/espressif__esp-dl/vision/detect/dl_detect_base.cpp[0m[0m:[1;31m13[0m
+[0m--- 0x4200989a: [0;33mcoco_detect_run[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/main/coco_detect.cpp[0m[0m:[1;31m16[0m
+[0m--- 0x420090b3: [0;33mface_task[0m[0m at [0;32m/home/ubuntu/esp/test/who_weixue/main/main.c[0m[0m:[1;31m85[0m
+[0m--- 0x4037d0e9: [0;33mesp_restart_noos[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m164[0m
+[0m--- 0x403c8700: [0;33m_stext[0m[0m at [0;32m??[0m[0m:[1;31m?[0m
+[0m--- 0x403c894c: [0;33mcall_start_cpu0[0m[0m at [0;32m/home/ubuntu/esp/esp-idf/components/bootloader/subproject/main/bootloader_start.c[0m[0m:[1;31m25[0m
+[0m

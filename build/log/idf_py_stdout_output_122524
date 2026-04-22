@@ -1,0 +1,134 @@
+Command: /home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python /home/ubuntu/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyACM0 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 /home/ubuntu/esp/test/who_weixue/build/who_weixue.elf /home/ubuntu/esp/test/who_weixue/build/lvgl_example.elf /home/ubuntu/esp/test/who_weixue/build/bootloader/bootloader.elf -m '/home/ubuntu/.espressif/python_env/idf5.5_py3.10_env/bin/python' '/home/ubuntu/esp/esp-idf/tools/idf.py'
+[0;32mI (141) esp_image: segment 1: paddr=00058d84 vaddr=3fc96600 sizeESP-ROM:esp32s3-20210327[0m
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037a50e
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+[0;32mI (24) boot: ESP-IDF v5.5.2 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Apr 22 2026 21:03:33[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (26) boot: chip revision: v0.2[0m
+[0;32mI (27) boot: efuse block revision: v1.3[0m
+[0;32mI (31) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 003e8000[0m
+[0;32mI (80) boot:  3 coco_det         Unknown data     01 82 003f8000 00400000[0m
+[0;32mI (86) boot: End of partition table[0m
+[0;32mI (90) esp_image: segment 0: paddr=00010020 vaddr=3c200020 size=48d5ch (298332) map[0m
+[0;32mI (141) esp_image: segment 1: paddr=00058d84 vaddr=3fc96600 size=05d98h ( 23960) load[0m
+[0;32mI (146) esp_image: segment 2: paddr=0005eb24 vaddr=40374000 size=014f4h (  5364) load[0m
+[0;32mI (148) esp_image: segment 3: paddr=00060020 vaddr=42000020 size=1fd34ch (2085708) map[0m
+[0;32mI (462) esp_image: segment 4: paddr=0025d374 vaddr=403754f4 size=11014h ( 69652) load[0m
+[0;32mI (476) esp_image: segment 5: paddr=0026e390 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (484) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (485) boot: Disabling RNG early entropy source...[0m
+[0;32mI (495) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (495) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (496) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (500) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (505) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (511) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (516) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (522) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (527) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (533) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (539) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (544) MSPI Timing: Enter psram timing tuning[0m
+[0;32mI (550) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (554) esp_psram: Speed: 80MHz[0m
+[0;32mI (558) cpu_start: Multicore app[0m
+[0;32mI (984) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (993) cpu_start: GPIO 44 and 43 are used as console UART I/O pins[0m
+[0;32mI (993) cpu_start: Pro cpu start user code[0m
+[0;32mI (994) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (998) app_init: Application information:[0m
+[0;32mI (1003) app_init: Project name:     who_weixue[0m
+[0;32mI (1008) app_init: App version:      b625752-dirty[0m
+[0;32mI (1013) app_init: Compile time:     Apr 22 2026 21:03:30[0m
+[0;32mI (1019) app_init: ELF file SHA256:  3af0566af138449c...[0m
+[0;32mI (1025) app_init: ESP-IDF:          v5.5.2[0m
+[0;32mI (1030) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1035) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (1040) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (1045) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1052) heap_init: At 3FCAD0F0 len 0003C620 (241 KiB): RAM[0m
+[0;32mI (1059) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (1065) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (1071) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (1077) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (1085) spi_flash: detected chip: generic[0m
+[0;32mI (1090) spi_flash: flash io: qio[0m
+[0;32mI (1094) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (1101) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (1109) main_task: Started on CPU0[0m
+[0;32mI (1119) main_task: Calling app_main()[0m
+[0;32mI (1119) s3 ll_cam: DMA Channel=0[0m
+[0;32mI (1119) cam_hal: cam init ok[0m
+[0;32mI (1129) sccb-ng: pin_sda 21 pin_scl 16[0m
+[0;32mI (1129) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (1159) ov3660: Mismatch PID=0x5640[0m
+[0;32mI (1159) camera: Camera PID=0x5640 VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (1159) camera: Detected OV5640 camera[0m
+[0;32mI (1159) camera: Detected camera at address=0x3c[0m
+[0;32mI (1849) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (1849) s3 ll_cam: node_size: 3200, nodes_per_line: 1, lines_per_node: 5[0m
+[0;32mI (1849) s3 ll_cam: dma_half_buffer_min:  3200, dma_half_buffer: 12800, lines_per_half_buffer: 20, dma_buffer_size: 25600[0m
+[0;32mI (1859) cam_hal: buffer_size: 25600, half_buffer_size: 12800, node_buffer_size: 3200, node_cnt: 8, total_cnt: 16[0m
+[0;32mI (1869) cam_hal: Allocating 204800 Byte frame buffer in PSRAM[0m
+[0;32mI (1879) cam_hal: cam config ok[0m
+[0;32mI (1889) ov5640: Set PLL: bypass: 0, multiplier: 8, sys_div: 1, pre_div: 1, root_2x: 0, pclk_root_div: 1, pclk_manual: 1, pclk_div: 4[0m
+[0;32mI (1889) ov5640: Calculated XVCLK: 20000000 Hz, REFIN: 20000000 Hz, VCO: 160000000 Hz, PLL_CLK: 64000000 Hz, SYSCLK: 16000000 Hz, PCLK: 8000000 Hz[0m
+[0;32mI (1929) init_board: SPI BUS init[0m
+[0;32mI (1929) init_board: Install panel IO[0m
+[0;32mI (1929) init_board: Install ST7789 panel driver[0m
+[0;33mW (2049) i2c.master: Please check pull-up resistances whether be connected properly. Otherwise unexpected behavior would happen. For more detailed information, please read docs[0m
+[0;32mI (2049) CST816S: IC id: 182[0m
+[0;32mI (2049) init_board: Initialize touch controller CST816[0m
+[0;32mI (2059) init_board: Install LVGL tick timer[0m
+[0;32mI (2069) init_board: LCD brightness set to 80%[0m
+[0;32mI (2079) main_task: Returned from app_main()[0m
+[0;32mI (30109) yolo11n: coco begin[0m
+[0;32mI (30109) yolo11n: heap internal: 186212
+[0m
+[0;32mI (30109) yolo11n: heap psram   : 7330116
+[0m
+[0;32mI (30109) FbsLoader: The storage free size is 22208 KB[0m
+[0;32mI (30119) FbsLoader: The partition size is 4096 KB[0m
+
+abort() was called at PC 0x421b9efe on core 0
+
+
+Backtrace: 0x4037cf75:0x3fcc6960 0x4037cf3d:0x3fcc6980 0x40383dbe:0x3fcc69a0 0x421b9efe:0x3fcc6a10 0x421b8e01:0x3fcc6a30 0x42076e7a:0x3fcc6a50 0x4207852e:0x3fcc6c10 0x4204c1e7:0x3fcc6c60 0x4204c7b5:0x3fcc6ce0 0x4201c964:0x3fcc6d10 0x4201cabf:0x3fcc6d70 0x421cc61e:0x3fcc6d90 0x4200989a:0x3fcc6db0 0x420090b7:0x3fcc6e00
+
+
+
+
+ELF file SHA256: 3af0566af138449c
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037d0e9
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1700
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x31c0
+entry 0x403c894c
+[0;32mI (24) boot: ESP-IDF v5.5.2 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Apr 22 2026 21:03:33[0m
+[0;32mI (24) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision
