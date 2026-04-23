@@ -1,0 +1,17 @@
+# ESP-IDF
+build/
+sdkconfig
+sdkconfig.old
+
+# C/C++
+*.o
+*.d
+
+# 工具链输出
+*.bin
+*.elf
+*.map
+
+# IDE
+.vscode/
+.idea/
