@@ -1,15 +1,4 @@
 dependencies:
-  espressif/coco_detect:
-    component_hash: 2bf4fae794755eb6ce9366093c758ac26d712eff84e27ee8f55cc8c3cbec1789
-    dependencies:
-    - name: espressif/esp-dl
-      registry_url: https://components.espressif.com
-      require: private
-      version: ~3.3.0
-    source:
-      registry_url: https://components.espressif.com/
-      type: service
-    version: 0.3.1
   espressif/dl_fft:
     component_hash: 7dadbd644c0d7ba4733cc3726ec4cff6edf27b043725e1115861dec1609a3d28
     dependencies:
@@ -125,6 +114,17 @@ dependencies:
     - esp32c5
     - esp32c6
     version: 0.6.1
+  espressif/human_face_detect:
+    component_hash: 0ab9612140eddbb74ede40d30c9567617f020bfbccf5a1ffe4c19d26da3d24d4
+    dependencies:
+    - name: espressif/esp-dl
+      registry_url: https://components.espressif.com
+      require: private
+      version: ~3.3.0
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 0.4.1
   idf:
     source:
       type: idf
@@ -137,13 +137,13 @@ dependencies:
       type: service
     version: 8.4.0
 direct_dependencies:
-- espressif/coco_detect
 - espressif/esp-dl
 - espressif/esp32-camera
 - espressif/esp_lcd_touch
 - espressif/esp_lcd_touch_cst816s
+- espressif/human_face_detect
 - idf
 - lvgl/lvgl
-manifest_hash: 9861199c15be5d408d8c18c870f29dbface487bfde71a90733b1eaf24fe05ba8
+manifest_hash: a24cb80de786bb944e4f8158024f4ed90bab1f27d445532b10ca4e2be08b310b
 target: esp32s3
 version: 2.0.0

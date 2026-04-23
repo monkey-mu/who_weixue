@@ -19,8 +19,10 @@
 
 
 #include "screens.h"
-#define CAM_W 120
-#define CAM_H 88
+#define CAM_W 176
+#define CAM_H 144
+#define IMG_W 176
+#define IMG_H 144
 
 static volatile int capt_b = 0;
 static volatile int face_busy = 0;
@@ -68,30 +70,42 @@ static inline void rgb565_to_rgb888(
     }
 }
 
-uint8_t *rgb888_buf;
+//uint8_t *rgb565_buf;
 
 static void face_task(void *param)
 {
+    lv_point_t points[5];
+    char numbuf[6];
     face_busy = 1;
 
-    rgb565_to_rgb888(
-    (uint16_t*)cam_who_buf,
-    rgb888_buf,
-    320,
-    320
-    );
     // AI 推理（耗时）
 
     coco_detect_run(
-        (uint8_t*)rgb888_buf,
-        320,
-        320,
-        (uint8_t*)cam_who_buf
+        (uint8_t*)cam_who_buf,
+        IMG_W,
+        IMG_H
     );
+    if(g_box_num>0)
+    {
+        points[0].x = g_boxes[0].x1*1.1;
+        points[0].y = g_boxes[0].y1*1.1;
+        points[1].x = g_boxes[0].x1*1.1;
+        points[1].y = g_boxes[0].y2*1.1;
+        points[2].x = g_boxes[0].x2*1.1;
+        points[2].y = g_boxes[0].y2*1.1;
+        points[3].x = g_boxes[0].x2*1.1;
+        points[3].y = g_boxes[0].y1*1.1;
+        points[4].x = g_boxes[0].x1*1.1;
+        points[4].y = g_boxes[0].y1*1.1;
+    }
+        
 
+    itoa(g_box_num, numbuf,3);
     if (lvgl_lock(-1))
     {
         lv_img_set_src(objects.img_edit, &who_img);
+        lv_line_set_points(objects.box_0,points,5);
+        lv_label_set_text(objects.t_num,numbuf);
         lvgl_unlock();
     }
 
@@ -99,8 +113,10 @@ static void face_task(void *param)
     vTaskDelete(NULL);
 }
 
+
 static void camera_task(void *param)
 {
+ //   rgb565_buf = heap_caps_malloc(IMG_W * IMG_H * 2, MALLOC_CAP_SPIRAM);
     camera_fb_t *pic;
 
     cam_buf = heap_caps_malloc(CAM_W * CAM_H * 2, MALLOC_CAP_SPIRAM);
@@ -111,12 +127,12 @@ static void camera_task(void *param)
     cam_img.data_size = CAM_W * CAM_H * 2;
     cam_img.data = (uint8_t *)cam_buf;
 
-    cam_who_buf = heap_caps_malloc(320 * 320 * 2, MALLOC_CAP_SPIRAM);
+    cam_who_buf = heap_caps_malloc(IMG_W * IMG_H * 2, MALLOC_CAP_SPIRAM);
 
     who_img.header.cf = LV_IMG_CF_TRUE_COLOR;
-    who_img.header.w = 320;
-    who_img.header.h = 320;
-    who_img.data_size = 320 * 320 * 3;
+    who_img.header.w = IMG_W;
+    who_img.header.h = IMG_H;
+    who_img.data_size = IMG_W * IMG_H * 2;
     who_img.data = (uint8_t *)cam_who_buf;
 
     uint32_t last_ui = 0;
@@ -128,9 +144,10 @@ static void camera_task(void *param)
         if (pic)
         {
             // ✔ 只做降采样
-            downscale_rgb565(
-                (uint16_t*)pic->buf, 320, 320,
-                (uint16_t*)cam_buf, CAM_W, CAM_H);
+            memcpy(cam_buf, pic->buf, pic->width * pic->height * 2);
+            // downscale_rgb565(
+            //     (uint16_t*)pic->buf, IMG_W, IMG_H,
+            //     (uint16_t*)cam_buf, CAM_W, CAM_H);
 
             // ✔ 限制 UI 刷新频率（关键）
             if (lv_tick_elaps(last_ui) > 50)
@@ -149,11 +166,13 @@ static void camera_task(void *param)
             {
                 capt_b = 0;
                 // 拷贝一帧，避免被 camera_task 覆盖
-                memcpy(cam_who_buf, pic->buf, pic->width * pic->height * 2);
+                 ESP_LOGI("task","w: %d,h: %d", pic->width, pic->height);
+                //memcpy(rgb565_buf, pic->buf, IMG_W * IMG_H * 2);
+                memcpy(cam_who_buf, pic->buf, IMG_W * IMG_H * 2);
                 xTaskCreatePinnedToCore(
                     face_task,
                     "face_task",
-                    1024 * 12,
+                    1024 * 4,
                     NULL,
                     4,
                     NULL,
@@ -204,10 +223,6 @@ static void lvgl_task(void *param)
 
 void app_main(void)
 {
-    rgb888_buf = heap_caps_malloc(
-    320 * 320 * 3,
-    MALLOC_CAP_SPIRAM
-    );
     lvgl_api_mux = xSemaphoreCreateRecursiveMutex();
     lv_init();
     camera_init();
@@ -223,7 +238,7 @@ void app_main(void)
         ui_init(); // 初始化UI
         lvgl_unlock();
     }
-    xTaskCreatePinnedToCore(lvgl_task, "bsp_lv_port_task", 1024 * 20, NULL, 5, NULL, 1);
+    xTaskCreatePinnedToCore(lvgl_task, "bsp_lv_port_task", 1024 * 6, NULL, 5, NULL, 1);
     xTaskCreatePinnedToCore(camera_task, "camera_task_task", 1024 * 3, NULL, 1, NULL, 0);
 }
 

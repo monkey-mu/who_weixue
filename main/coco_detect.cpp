@@ -1,33 +1,36 @@
-#include "coco_detect.hpp"
+#include "human_face_detect.hpp"
 #include "dl_image_jpeg.hpp"
-// extern "C" {
-// #include "init_board.h"
-// }
+extern "C" {
+#include "coco_detect.h"
+}
 
-
+detect_box_t g_boxes[MAX_BOX];
+int g_box_num = 0;
 const char *TAG = "yolo11n";
-extern "C" void coco_detect_run(uint8_t *rgb565, uint16_t w, uint16_t h, uint8_t *detect_img)
+extern "C" void coco_detect_run(uint8_t *rgb565, uint16_t w, uint16_t h)
 {
-    ESP_LOGI(TAG,"coco begin");
-    dl::image::img_t img = {.data=rgb565, .width=w, .height=h, .pix_type=dl::image::DL_IMAGE_PIX_TYPE_RGB888};
-    COCODetect *detect = new COCODetect();
-    ESP_LOGI(TAG,"heap internal: %d\n", heap_caps_get_free_size(MALLOC_CAP_INTERNAL));
-    ESP_LOGI(TAG,"heap psram   : %d\n", heap_caps_get_free_size(MALLOC_CAP_SPIRAM));
-    auto &detect_results = detect->run(img);
-    for (const auto &res : detect_results) {
-        ESP_LOGI(TAG,
-                 "[category: %d, score: %f, x1: %d, y1: %d, x2: %d, y2: %d]",
-                 res.category,
-                 res.score,
-                 res.box[0],
-                 res.box[1],
-                 res.box[2],
-                 res.box[3]);
+    dl::image::img_t img_src = {.data=rgb565, .width=w, .height=h, .pix_type =dl::image::DL_IMAGE_PIX_TYPE_RGB565BE};
+    dl::image::img_t img_dst = {.data=heap_caps_malloc(160 * 120 * 3,MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT), 
+                                .width=160, .height=120, .pix_type =dl::image::DL_IMAGE_PIX_TYPE_RGB888};
+    if (!img_dst.data) {
+    ESP_LOGI(TAG,"img_dst alloc failed\n");
+    return;
+    }
+    dl::image::ImageTransformer transformer;
+    transformer.set_src_img(img_src).set_dst_img(img_dst).set_src_img_crop_area({8, 12, 168, 132});
+    transformer.transform();
+    HumanFaceDetect  *detect = new HumanFaceDetect();
+    auto &detect_results = detect->run(img_dst);
+    g_box_num = 0;
+    for (const auto &res : detect_results) { 
+        g_boxes[g_box_num].x1 = res.box[0];
+        g_boxes[g_box_num].y1 = res.box[1];
+        g_boxes[g_box_num].x2 = res.box[2];
+        g_boxes[g_box_num].y2 = res.box[3];
+        g_box_num++;
     }
     ESP_LOGI(TAG,"coco over");
     delete detect;
 
- //   memcpy(detect_img,img.data, img.width*img.height*2);
-
-    heap_caps_free(img.data);
+    heap_caps_free(img_dst.data);
 }

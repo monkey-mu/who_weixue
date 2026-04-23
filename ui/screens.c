@@ -105,8 +105,8 @@ void create_screen_camera() {
             // btn_break
             lv_obj_t *obj = lv_btn_create(parent_obj);
             objects.btn_break = obj;
-            lv_obj_set_pos(obj, 144, 276);
-            lv_obj_set_size(obj, 73, 32);
+            lv_obj_set_pos(obj, 184, 242);
+            lv_obj_set_size(obj, 50, 32);
             lv_obj_add_event_cb(obj, event_handler_cb_camera_btn_break, LV_EVENT_ALL, flowState);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xffd8e6e9), LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_text_color(obj, lv_color_hex(0xff026166), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -126,14 +126,14 @@ void create_screen_camera() {
             lv_obj_t *obj = lv_img_create(parent_obj);
             objects.img_edit = obj;
             lv_obj_set_pos(obj, 0, 0);
-            lv_obj_set_size(obj, 240, 176);
+            lv_obj_set_size(obj, 176, 144);
         }
         {
             // btn_captue
             lv_obj_t *obj = lv_btn_create(parent_obj);
             objects.btn_captue = obj;
-            lv_obj_set_pos(obj, 24, 276);
-            lv_obj_set_size(obj, 73, 32);
+            lv_obj_set_pos(obj, 184, 184);
+            lv_obj_set_size(obj, 49, 32);
             lv_obj_add_event_cb(obj, event_handler_cb_camera_btn_captue, LV_EVENT_ALL, flowState);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xff0cb490), LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_text_color(obj, lv_color_hex(0xffe60d0d), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -144,23 +144,46 @@ void create_screen_camera() {
                     lv_obj_set_pos(obj, 0, 0);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
-                    lv_label_set_text(obj, "capture");
+                    lv_label_set_text(obj, "capt");
                 }
             }
-        }
-        {
-            // img_captue
-            lv_obj_t *obj = lv_img_create(parent_obj);
-            objects.img_captue = obj;
-            lv_obj_set_pos(obj, 0, 176);
-            lv_obj_set_size(obj, 120, 88);
         }
         {
             // img_camera
             lv_obj_t *obj = lv_img_create(parent_obj);
             objects.img_camera = obj;
-            lv_obj_set_pos(obj, 120, 176);
-            lv_obj_set_size(obj, 120, 88);
+            lv_obj_set_pos(obj, 0, 144);
+            lv_obj_set_size(obj, 176, 144);
+        }
+        {
+            lv_obj_t *obj = lv_label_create(parent_obj);
+            lv_obj_set_pos(obj, 184, 25);
+            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+            lv_label_set_text(obj, "Count:");
+        }
+        {
+            // t_num
+            lv_obj_t *obj = lv_label_create(parent_obj);
+            objects.t_num = obj;
+            lv_obj_set_pos(obj, 202, 53);
+            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+            lv_label_set_text(obj, "0");
+        }
+        {
+            // box_0
+            lv_obj_t *obj = lv_line_create(parent_obj);
+            objects.box_0 = obj;
+            lv_obj_set_pos(obj, 0, 0);
+            lv_obj_set_size(obj, 176, 144);
+            static lv_point_t line_points[] = {
+                { 0, 0 },
+                { 0, 50 },
+                { 50, 50 },
+                { 50, 0 },
+                { 0, 0 }
+            };
+            lv_line_set_points(obj, line_points, 5);
+            lv_obj_set_style_line_color(obj, lv_color_hex(0xfff5f600), LV_PART_MAIN | LV_STATE_DEFAULT);
         }
     }
     
@@ -174,7 +197,7 @@ void tick_screen_camera() {
 
 
 static const char *screen_names[] = { "Main", "camera" };
-static const char *object_names[] = { "main", "camera", "start", "btn_break", "btn_captue", "img_edit", "img_captue", "img_camera" };
+static const char *object_names[] = { "main", "camera", "start", "btn_break", "btn_captue", "img_edit", "img_camera", "t_num", "box_0" };
 
 
 typedef void (*tick_screen_func_t)();

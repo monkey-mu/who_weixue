@@ -14,8 +14,9 @@ typedef struct _objects_t {
     lv_obj_t *btn_break;
     lv_obj_t *btn_captue;
     lv_obj_t *img_edit;
-    lv_obj_t *img_captue;
     lv_obj_t *img_camera;
+    lv_obj_t *t_num;
+    lv_obj_t *box_0;
 } objects_t;
 
 extern objects_t objects;
