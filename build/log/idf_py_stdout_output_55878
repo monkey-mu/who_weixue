@@ -1,9 +1,0 @@
-Command: ninja all
-[0/1] Re-running CMake...
--- Minimal build - OFF
--- Building ESP-IDF components for target esp32s3
-NOTICE: Manifest files have changed, solving dependencies.
--- Configuring incomplete, errors occurred!
-See also "/home/ubuntu/esp/test/who_weixue/build/CMakeFiles/CMakeOutput.log".
-FAILED: build.ninja 
-/usr/bin/cmake --regenerate-during-build -S/home/ubuntu/esp/test/who_weixue -B/home/ubuntu/esp/test/who_weixue/build
