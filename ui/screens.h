@@ -10,13 +10,19 @@ extern "C" {
 typedef struct _objects_t {
     lv_obj_t *main;
     lv_obj_t *camera;
-    lv_obj_t *start;
-    lv_obj_t *btn_break;
-    lv_obj_t *btn_captue;
-    lv_obj_t *img_edit;
+    lv_obj_t *obj0;
+    lv_obj_t *obj1;
+    lv_obj_t *obj2;
+    lv_obj_t *obj3;
+    lv_obj_t *obj4;
     lv_obj_t *img_camera;
     lv_obj_t *t_num;
     lv_obj_t *box_0;
+    lv_obj_t *box_1;
+    lv_obj_t *box_2;
+    lv_obj_t *box_3;
+    lv_obj_t *box_4;
+    lv_obj_t *box_5;
 } objects_t;
 
 extern objects_t objects;

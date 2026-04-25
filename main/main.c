@@ -19,28 +19,20 @@
 
 
 #include "screens.h"
-#define CAM_W 176
-#define CAM_H 144
-#define IMG_W 176
-#define IMG_H 144
+#define CAM_W 240
+#define CAM_H 240
+
 
 static volatile int capt_b = 0;
+static volatile int camera_end_b = 0;
 static volatile int face_busy = 0;
-
+static volatile int camera_busy = 0;
 lv_color_t *cam_buf;
 static lv_img_dsc_t cam_img;
-lv_color_t *cam_who_buf ;
-static lv_img_dsc_t who_img;
-// static lv_color_t cam_cap_buf[CAM_W * CAM_H];
-// static lv_img_dsc_t cap_img = {
-//     .header.cf = LV_IMG_CF_TRUE_COLOR,
-//     .header.w = CAM_W,
-//     .header.h = CAM_H,
-//     .data_size = CAM_W * CAM_H * 2,
-//     .data = (uint8_t *)cam_cap_buf,
-// };
 
 
+
+static void camera_task(void *param);
 void action_camera_capture(lv_event_t * e)
 {
     if (!face_busy) {
@@ -48,25 +40,24 @@ void action_camera_capture(lv_event_t * e)
     }
 }
 
-static inline void rgb565_to_rgb888(
-    const uint16_t *src,
-    uint8_t *dst,
-    int w,
-    int h)
+void action_capture_delete(lv_event_t * e)
 {
-    int pixels = w * h;
+    if(!camera_busy){
+        xTaskCreatePinnedToCore(camera_task, "camera_task_task", 1024 * 3, NULL, 1, NULL, 0);
+    }
+}
 
-    for (int i = 0; i < pixels; i++) {
-        uint16_t p = src[i];
+void action_camera_start(lv_event_t * e)
+{
+    if(!camera_busy){
+        xTaskCreatePinnedToCore(camera_task, "camera_task_task", 1024 * 3, NULL, 1, NULL, 0);
+    }
+}
 
-        uint8_t r = (p >> 11) & 0x1F;
-        uint8_t g = (p >> 5)  & 0x3F;
-        uint8_t b = p & 0x1F;
-
-        // 扩展到8bit（关键）
-        dst[i * 3 + 0] = (r << 3) | (r >> 2);
-        dst[i * 3 + 1] = (g << 2) | (g >> 4);
-        dst[i * 3 + 2] = (b << 3) | (b >> 2);
+void action_camera_end(lv_event_t * e)
+{
+    if(camera_busy){
+        camera_end_b = 1;
     }
 }
 
@@ -74,37 +65,43 @@ static inline void rgb565_to_rgb888(
 
 static void face_task(void *param)
 {
-    lv_point_t points[5];
+    lv_point_t points[5][5];
     char numbuf[6];
     face_busy = 1;
 
     // AI 推理（耗时）
 
     coco_detect_run(
-        (uint8_t*)cam_who_buf,
-        IMG_W,
-        IMG_H
+        (uint8_t*)cam_buf,
+        CAM_W,
+        CAM_H
     );
     if(g_box_num>0)
     {
-        points[0].x = g_boxes[0].x1*1.1;
-        points[0].y = g_boxes[0].y1*1.1;
-        points[1].x = g_boxes[0].x1*1.1;
-        points[1].y = g_boxes[0].y2*1.1;
-        points[2].x = g_boxes[0].x2*1.1;
-        points[2].y = g_boxes[0].y2*1.1;
-        points[3].x = g_boxes[0].x2*1.1;
-        points[3].y = g_boxes[0].y1*1.1;
-        points[4].x = g_boxes[0].x1*1.1;
-        points[4].y = g_boxes[0].y1*1.1;
-    }
+        for(int i=0;i<g_box_num&&i<5;i++)
+        {
+            points[i][0].x = g_boxes[i].x1;
+            points[i][0].y = g_boxes[i].y1;
+            points[i][1].x = g_boxes[i].x1;
+            points[i][1].y = g_boxes[i].y2;
+            points[i][2].x = g_boxes[i].x2;
+            points[i][2].y = g_boxes[i].y2;
+            points[i][3].x = g_boxes[i].x2;
+            points[i][3].y = g_boxes[i].y1;
+            points[i][4].x = g_boxes[i].x1;
+            points[i][4].y = g_boxes[i].y1;
+        }
         
+    }
 
-    itoa(g_box_num, numbuf,3);
+    itoa(g_box_num, numbuf,10);
     if (lvgl_lock(-1))
     {
-        lv_img_set_src(objects.img_edit, &who_img);
-        lv_line_set_points(objects.box_0,points,5);
+        lv_line_set_points(objects.box_0,&points[0][0],5);         
+        lv_line_set_points(objects.box_1,&points[1][0],5); 
+        lv_line_set_points(objects.box_2,&points[2][0],5); 
+        lv_line_set_points(objects.box_3,&points[3][0],5); 
+        lv_line_set_points(objects.box_4,&points[4][0],5); 
         lv_label_set_text(objects.t_num,numbuf);
         lvgl_unlock();
     }
@@ -116,25 +113,8 @@ static void face_task(void *param)
 
 static void camera_task(void *param)
 {
- //   rgb565_buf = heap_caps_malloc(IMG_W * IMG_H * 2, MALLOC_CAP_SPIRAM);
+    camera_busy = 1;
     camera_fb_t *pic;
-
-    cam_buf = heap_caps_malloc(CAM_W * CAM_H * 2, MALLOC_CAP_SPIRAM);
-
-    cam_img.header.cf = LV_IMG_CF_TRUE_COLOR;
-    cam_img.header.w = CAM_W;
-    cam_img.header.h = CAM_H;
-    cam_img.data_size = CAM_W * CAM_H * 2;
-    cam_img.data = (uint8_t *)cam_buf;
-
-    cam_who_buf = heap_caps_malloc(IMG_W * IMG_H * 2, MALLOC_CAP_SPIRAM);
-
-    who_img.header.cf = LV_IMG_CF_TRUE_COLOR;
-    who_img.header.w = IMG_W;
-    who_img.header.h = IMG_H;
-    who_img.data_size = IMG_W * IMG_H * 2;
-    who_img.data = (uint8_t *)cam_who_buf;
-
     uint32_t last_ui = 0;
 
     while (1)
@@ -143,12 +123,7 @@ static void camera_task(void *param)
 
         if (pic)
         {
-            // ✔ 只做降采样
             memcpy(cam_buf, pic->buf, pic->width * pic->height * 2);
-            // downscale_rgb565(
-            //     (uint16_t*)pic->buf, IMG_W, IMG_H,
-            //     (uint16_t*)cam_buf, CAM_W, CAM_H);
-
             // ✔ 限制 UI 刷新频率（关键）
             if (lv_tick_elaps(last_ui) > 50)
             {
@@ -164,11 +139,7 @@ static void camera_task(void *param)
             // ✔ 拍照触发 AI（异步）
             if (capt_b && !face_busy)
             {
-                capt_b = 0;
                 // 拷贝一帧，避免被 camera_task 覆盖
-                 ESP_LOGI("task","w: %d,h: %d", pic->width, pic->height);
-                //memcpy(rgb565_buf, pic->buf, IMG_W * IMG_H * 2);
-                memcpy(cam_who_buf, pic->buf, IMG_W * IMG_H * 2);
                 xTaskCreatePinnedToCore(
                     face_task,
                     "face_task",
@@ -182,9 +153,16 @@ static void camera_task(void *param)
 
             esp_camera_fb_return(pic);
         }
-
+        if(camera_end_b || capt_b)
+        {
+            capt_b = 0;
+            camera_end_b = 0;
+            break;
+        }
         vTaskDelay(pdMS_TO_TICKS(30)); // ❗ 从1改到30
     }
+    camera_busy = 0;
+    vTaskDelete(NULL);
 }
 
 static void lvgl_task(void *param)
@@ -204,7 +182,7 @@ static void lvgl_task(void *param)
                 }
                 else
                 {
-                    task_delay_ms = 50; // AI期间降低刷新
+                    task_delay_ms = 500; // AI期间降低刷新
                 }
                 lvgl_unlock();
             }
@@ -233,13 +211,20 @@ void app_main(void)
     lvgl_tick_timer_init(EXAMPLE_LVGL_TICK_PERIOD_MS);
     bsp_brightness_init();
     bsp_brightness_set_level(80);
+        
+    cam_buf = heap_caps_malloc(CAM_W * CAM_H * 2, MALLOC_CAP_SPIRAM);
+    cam_img.header.cf = LV_IMG_CF_TRUE_COLOR;
+    cam_img.header.w = CAM_W;
+    cam_img.header.h = CAM_H;
+    cam_img.data_size = CAM_W * CAM_H * 2;
+    cam_img.data = (uint8_t *)cam_buf;
+
     if (lvgl_lock(-1))
     {
         ui_init(); // 初始化UI
         lvgl_unlock();
     }
     xTaskCreatePinnedToCore(lvgl_task, "bsp_lv_port_task", 1024 * 6, NULL, 5, NULL, 1);
-    xTaskCreatePinnedToCore(camera_task, "camera_task_task", 1024 * 3, NULL, 1, NULL, 0);
 }
 
 

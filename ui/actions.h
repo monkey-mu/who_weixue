@@ -4,10 +4,13 @@
 #include <lvgl.h>
 
 #ifdef __cplusplus
-extern "C" {
+extern "C" {  
 #endif
 
 extern void action_camera_capture(lv_event_t * e);
+extern void action_capture_delete(lv_event_t * e);
+extern void action_camera_end(lv_event_t * e);
+extern void action_camera_start(lv_event_t * e);
 
 
 #ifdef __cplusplus

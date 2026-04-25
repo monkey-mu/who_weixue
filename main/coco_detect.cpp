@@ -17,9 +17,9 @@ extern "C" void coco_detect_run(uint8_t *rgb565, uint16_t w, uint16_t h)
     return;
     }
     dl::image::ImageTransformer transformer;
-    transformer.set_src_img(img_src).set_dst_img(img_dst).set_src_img_crop_area({8, 12, 168, 132});
+    transformer.set_src_img(img_src).set_dst_img(img_dst);
     transformer.transform();
-    HumanFaceDetect  *detect = new HumanFaceDetect();
+    HumanFaceDetect  *detect = new HumanFaceDetect(HumanFaceDetect::MSRMNP_S8_V1);
     auto &detect_results = detect->run(img_dst);
     g_box_num = 0;
     for (const auto &res : detect_results) { 
